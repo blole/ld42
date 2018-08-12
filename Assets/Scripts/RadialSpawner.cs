@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class RadialSpawner : BulletSpawner
 {
@@ -42,6 +43,19 @@ public class RadialSpawner : BulletSpawner
                     bullet.speed = transform.TransformDirection(angle.ToVector2() * bulletSpeed);
                 }
             }
+        }
+    }
+
+    protected override void OnSceneGUI()
+    {
+        Bullets bullets = FindObjectOfType<Bullets>();
+
+        for (int i = 0; i < rotationalSymmetries; i++)
+        {
+            float angle = -laneAngle / 2 + 360f * i / rotationalSymmetries;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.back);
+            Handles.color = new Color(1, 1, 1, 0.05f);
+            Handles.DrawSolidArc(transform.position, Vector3.back, q * transform.up, laneAngle, bullets.killPlaneRadius / 2);
         }
     }
 }

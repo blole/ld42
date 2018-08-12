@@ -43,4 +43,14 @@ public static class Extensions
     {
         return new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
     }
+
+    public static IEnumerable<GameObject> Ancestors(this GameObject gameObject)
+    {
+        Transform transform = gameObject.transform;
+        while (transform != null && transform.gameObject != null)
+        {
+            yield return transform.gameObject;
+            transform = transform.gameObject.transform.parent;
+        }
+    }
 }

@@ -113,6 +113,128 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &731529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731530}
+  - component: {fileID: 731531}
+  m_Layer: 0
+  m_Name: StraightSpawner Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731529}
+  m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.38268343}
+  m_LocalPosition: {x: -6, y: 6, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1433761165}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
+--- !u!114 &731531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55626b4b161cab64fb7d474822d39c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 0.15
+  bulletAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0008583069
+      value: 0.2000122
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.09860964
+      value: -0.002603054
+      inSlope: -0.017298875
+      outSlope: -0.017298875
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19883282
+    - serializedVersion: 3
+      time: 0.19908108
+      value: 0.20048004
+      inSlope: 0.028880473
+      outSlope: 0.028880473
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.20332558
+    - serializedVersion: 3
+      time: 0.29913783
+      value: -0.002114892
+      inSlope: 0.013478338
+      outSlope: 0.013478338
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1796305
+    - serializedVersion: 3
+      time: 0.6992117
+      value: 1.0019436
+      inSlope: -0.04820854
+      outSlope: -0.04820854
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.20304629
+    - serializedVersion: 3
+      time: 0.80044365
+      value: 0.8021605
+      inSlope: 0.070369735
+      outSlope: 0.070369735
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.39800432
+    - serializedVersion: 3
+      time: 0.9003485
+      value: 1.0000006
+      inSlope: 0.000011071254
+      outSlope: 0.000011071254
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.20085455
+    - serializedVersion: 3
+      time: 1
+      value: 0.79504013
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  animationSpeed: 1
+  bulletFrequency: 20
+  laneWidth: 2
 --- !u!1 &156286121
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,13 +518,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 183146433}
-  m_LocalRotation: {x: -0, y: -0, z: 0.92822623, w: 0.37201622}
-  m_LocalPosition: {x: 7.1, y: 6.22, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 7, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1433761165}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 136.32}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &667350283
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1238201532
 Transform:
   m_ObjectHideFlags: 0
@@ -644,6 +766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1433761165}
+  - component: {fileID: 1433761166}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -663,9 +786,25 @@ Transform:
   m_Children:
   - {fileID: 183146435}
   - {fileID: 1238201532}
+  - {fileID: 731530}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &1433761166
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1433761164}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 2e2f4bd8a1a3dbf40b47108a97d65b74, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 2e2f4bd8a1a3dbf40b47108a97d65b74, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1905757039
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +982,7 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1982532177}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

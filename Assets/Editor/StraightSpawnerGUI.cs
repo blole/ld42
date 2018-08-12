@@ -6,13 +6,10 @@ using UnityEditor;
 [CustomEditor(typeof(StraightSpawner))]
 public class StraightSpawnerGUI : Editor
 {
-    void OnSceneGUI()
+    void OnEnable()
     {
         StraightSpawner target = this.target as StraightSpawner;
-        Bullets bullets = FindObjectOfType<Bullets>();
-
-        float w = target.laneWidth + bullets.bulletRadius * 2;
-        var rect = new Rect(-w / 2, 0, w, 50);
-        Handles.DrawSolidRectangleWithOutline(target.transform.TransformPoints(rect.ToPoints()), new Color(1,1,1,0.1f), Color.gray);
+        SceneView.onSceneGUIDelegate -= target.OnSceneGUI;
+        SceneView.onSceneGUIDelegate += target.OnSceneGUI;
     }
 }

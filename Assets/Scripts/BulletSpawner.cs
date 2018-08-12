@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using System.Linq;
 
 public class BulletSpawner : MonoBehaviour
 {
@@ -16,5 +18,13 @@ public class BulletSpawner : MonoBehaviour
     {
         startTime = Time.time;
         bullets = FindObjectOfType<Bullets>();
+    }
+
+    protected virtual void OnSceneGUI() { }
+    public void OnSceneGUI(SceneView sceneView)
+    {
+        Handles.color = Color.white;
+        if (gameObject.activeInHierarchy && gameObject.Ancestors().Any(go => go == Selection.activeGameObject))
+            OnSceneGUI();
     }
 }

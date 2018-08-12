@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0.15
+  bulletFrequency: 15
   bulletAnimation:
     serializedVersion: 2
     m_Curve:
@@ -233,7 +234,6 @@ MonoBehaviour:
     m_PostInfinity: 0
     m_RotationOrder: 4
   animationSpeed: 1
-  bulletFrequency: 20
   laneWidth: 2
 --- !u!1 &156286121
 GameObject:
@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0.15
+  bulletFrequency: 15
   bulletAnimation:
     serializedVersion: 2
     m_Curve:
@@ -510,7 +511,6 @@ MonoBehaviour:
     m_PostInfinity: 0
     m_RotationOrder: 4
   animationSpeed: 1
-  bulletFrequency: 20
   laneWidth: 2
 --- !u!4 &183146435
 Transform:
@@ -728,6 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0.05
+  bulletFrequency: 15
   bulletAnimation:
     serializedVersion: 2
     m_Curve:
@@ -753,7 +754,6 @@ MonoBehaviour:
     m_PostInfinity: 0
     m_RotationOrder: 4
   animationSpeed: 1
-  bulletFrequency: 15
   mirrorSymmetry: 1
   rotationalSymmetries: 7
   laneAngle: 70

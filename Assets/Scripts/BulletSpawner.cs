@@ -8,16 +8,28 @@ public class BulletSpawner : MonoBehaviour
 {
     [Range(0, 0.5f)]
     public float bulletSpeed = 0.1f;
+    public float bulletFrequency = 1;
 
     protected Bullets bullets;
-    protected float startTime;
-    protected float time { get { return Time.time - startTime; } }
-    protected float lastBulletSpawnTime = 0;
+    protected float time { get { return Time.time; } }
+    private float prevBulletSpawnTime = 0;
 
     protected virtual void Start()
     {
-        startTime = Time.time;
         bullets = FindObjectOfType<Bullets>();
+    }
+
+    protected virtual void SpawnBullets() { }
+    protected virtual void Update()
+    {
+        if (time - prevBulletSpawnTime > 1 / bulletFrequency)
+        {
+            while (time - prevBulletSpawnTime > 1 / bulletFrequency)
+                prevBulletSpawnTime += 1 / bulletFrequency;
+            //prevBulletSpawnTime = time - (time % (1 / bulletFrequency));
+            //prevBulletSpawnTime = time;
+            SpawnBullets();
+        }
     }
 
     protected virtual void OnSceneGUI() { }

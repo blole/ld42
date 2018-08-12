@@ -11,6 +11,7 @@ public class Bullets : MonoBehaviour
     public float killPlaneRadius = 500;
     public GameObject bulletPrefab;
 
+    public float bulletRadius { get { return bulletPrefab.GetComponent<CircleCollider2D>().radius; } }
     private List<Bullet> pool = new List<Bullet>();
     public List<Bullet> active = new List<Bullet>();
     
@@ -19,23 +20,22 @@ public class Bullets : MonoBehaviour
         bulletPrefab.SetActive(false);
 
         for (int i = 0; i < startingBulletPoolSize; i++)
-            createBullet();
+            pool.Add(createBullet());
 	}
 
-    Bullet createBullet()
+    private Bullet createBullet()
     {
         var bullet = new Bullet(Instantiate(bulletPrefab, transform));
         bullet.active = false;
-        pool.Add(bullet);
         return bullet;
     }
 
-    Bullet allocBullet()
+    public Bullet allocBullet()
     {
-        if (pool.isEmpty())
-            return createBullet();
-        else
-            return pool.RemoveLast();
+        Bullet bullet = pool.isEmpty() ? createBullet() : pool.RemoveLast();
+        bullet.active = true;
+        active.Add(bullet);
+        return bullet;
     }
 
     Vector3 RandomOnUnitCircle()
@@ -49,16 +49,13 @@ public class Bullets : MonoBehaviour
         if (Random.value < frequency)
         {
             Bullet bullet = allocBullet();
-            active.Add(bullet);
-            bullet.active = true;
             bullet.transform.localPosition = RandomOnUnitCircle() * killPlaneRadius * 0.99f;
-            print(bullet.transform.localPosition);
             bullet.speed = RandomOnUnitCircle() * bulletSpeed;
         }
 
         foreach (Bullet bullet in active)
         {
-            if (bullet.transform.localPosition.magnitude > killPlaneRadius)
+            if (bullet.transform.position.magnitude > killPlaneRadius)
                 bullet.active = false;
             if (!bullet.active)
                 pool.Add(bullet);

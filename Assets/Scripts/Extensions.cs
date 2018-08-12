@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public static class Extensions
 {
@@ -16,13 +17,30 @@ public static class Extensions
         return element;
     }
 
-    //public static Vector2 ToVector2(this Vector3 v)
-    //{
-    //    return new Vector2(v.x, v.y);
-    //}
-    //
-    //public static Vector3 ToVector3(this Vector2 v)
-    //{
-    //    return new Vector3(v.x, v.y, 0);
-    //}
+    public static Vector3[] ToPoints(this Rect rect)
+    {
+        return new Vector3[]
+        {
+            new Vector3(rect.xMin, rect.yMin, 0),
+            new Vector3(rect.xMin, rect.yMax, 0),
+            new Vector3(rect.xMax, rect.yMax, 0),
+            new Vector3(rect.xMax, rect.yMin, 0)
+        };
+    }
+
+    public static Vector3[] Rotate(this Vector3[] verts, float angle, Vector3 axis)
+    {
+        Quaternion q = Quaternion.AngleAxis(angle, axis);
+        return verts.Select(v => q * v).ToArray();
+    }
+
+    public static Vector3[] TransformPoints(this Transform transform, Vector3[] verts)
+    {
+        return verts.Select(v => transform.TransformPoint(v)).ToArray();
+    }
+
+    public static Vector2 ToVector2(this float radians)
+    {
+        return new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+    }
 }

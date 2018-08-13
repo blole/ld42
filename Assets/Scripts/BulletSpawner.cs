@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using System;
 
 [ExecuteInEditMode]
 public class BulletSpawner : MonoBehaviour
@@ -10,6 +11,7 @@ public class BulletSpawner : MonoBehaviour
     [Range(0, 30)]
     public float bulletSpeed = 6f;
     public float bulletFrequency = 1;
+    protected float timeToDie = float.PositiveInfinity;
 
     protected Bullets bullets;
     protected float time { get { return Time.time; } }
@@ -28,6 +30,13 @@ public class BulletSpawner : MonoBehaviour
             return;
 #endif
 
+        if (timeToDie < Time.time)
+        {
+            gameObject.SetActive(false);
+            timeToDie = float.PositiveInfinity;
+            return;
+        }
+
         if (time - prevBulletSpawnTime > 1 / bulletFrequency)
         {
             while (time - prevBulletSpawnTime > 1 / bulletFrequency)
@@ -37,6 +46,15 @@ public class BulletSpawner : MonoBehaviour
             SpawnBullets();
         }
         //StraightSpawner target = this.target as StraightSpawner;
+    }
+
+    public void activateForSeconds(float seconds)
+    {
+        if (seconds < 0)
+            return;
+
+        timeToDie = Time.time + seconds;
+        gameObject.SetActive(true);
     }
 
     protected virtual void OnSceneGUI() { }

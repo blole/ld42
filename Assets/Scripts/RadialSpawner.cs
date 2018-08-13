@@ -17,6 +17,11 @@ public class RadialSpawner : BulletSpawner
     protected override void Update()
     {
         base.Update();
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            return;
+#endif
+
         transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
     }
 

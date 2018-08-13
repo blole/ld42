@@ -276,8 +276,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fe90c2be82276419482b77ae6e4850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  killRect:
+    serializedVersion: 2
+    x: -5
+    y: -6
+    width: 10
+    height: 12
+  outerKillRect:
+    serializedVersion: 2
+    x: -10
+    y: -12
+    width: 20
+    height: 24
   startingBulletPoolSize: 16
-  killPlaneRadius: 9
   bulletPrefab: {fileID: 1813974136049602, guid: af0cbf591006a9645b92852c84a47c57,
     type: 2}
 --- !u!212 &179019889

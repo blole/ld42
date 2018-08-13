@@ -13,7 +13,7 @@ public class StraightSpawner : BulletSpawner
     {
         Bullet bullet = bullets.allocBullet();
         bullet.transform.localPosition = transform.TransformPoint(new Vector2((bulletAnimation.Evaluate(time * animationSpeed) - 0.5f) * laneWidth, 0));
-        bullet.speed = transform.TransformDirection(new Vector2(0, bulletSpeed));
+        bullet.setDirection(transform.eulerAngles.z, bulletSpeed);
     }
 
 #if UNITY_EDITOR

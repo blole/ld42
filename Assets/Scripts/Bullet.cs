@@ -8,18 +8,12 @@ public class Bullet
     public bool active { get { return gameObject.activeSelf; } set { gameObject.SetActive(value); } }
     public Transform transform { get { return gameObject.transform; } }
 
-    private float moveSpeed = 0;
-    public Vector2 speed
+    private float speed = 0;
+
+    public void setDirection(float angle, float speed)
     {
-        get { return transform.up * moveSpeed; }
-        set
-        {
-            if (value.magnitude == 0)
-                transform.up = Vector3.up;
-            else
-                transform.up = value.normalized;
-            moveSpeed = value.magnitude;
-        }
+        gameObject.transform.Rotate(0, 0, angle, Space.World);
+        this.speed = speed;
     }
 
     public Bullet(GameObject gameObject)
@@ -29,6 +23,6 @@ public class Bullet
 
     public void Update ()
     {
-        transform.Translate(transform.up * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 }

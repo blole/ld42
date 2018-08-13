@@ -40,7 +40,7 @@ public class RadialSpawner : BulletSpawner
                 float angle = (v - 0.5f) * laneAngle * Mathf.Deg2Rad + 2 * Mathf.PI * i / rotationalSymmetries;
                 Bullet bullet = bullets.allocBullet();
                 bullet.transform.localPosition = transform.localPosition;
-                bullet.speed = transform.TransformDirection(angle.ToVector2() * bulletSpeed);
+                bullet.setDirection(transform.eulerAngles.z + angle*Mathf.Rad2Deg, bulletSpeed);
             }
         }
     }

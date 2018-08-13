@@ -50,7 +50,15 @@ public class PlayerInput : MonoBehaviour
 
     void OnBulletHit(List<Bullet> hittingBullets)
     {
-        transform.localPosition = startingPosition;
+        gameObject.SetActive(false);
         hittingBullets.ForEach(b => b.active = false); //remove all hitting bullets
+
+        KillScreen killScreen = FindObjectOfType<KillScreen>();
+        if (!killScreen)
+        {
+            Debug.LogError("no killscreen object found!");
+            return;
+        }
+        killScreen.OnKill();
     }
 }

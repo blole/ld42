@@ -22,7 +22,6 @@ public class Bullets : MonoBehaviour
         //only use collider's radius, then remove it
         bulletRadius = bulletPrefab.GetComponent<CircleCollider2D>().radius;
         bulletColliderOffset = bulletPrefab.GetComponent<CircleCollider2D>().offset;
-        Debug.Log("bulletPrefab collision radius = " + bulletRadius);
         bulletPrefab = createBullet().gameObject; //copy it to be able to remove collider
         DestroyImmediate(bulletPrefab.GetComponent<CircleCollider2D>());
 

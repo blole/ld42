@@ -37,13 +37,14 @@ public class BulletSpawner : MonoBehaviour
             return;
         }
 
-        if (time - prevBulletSpawnTime > 1 / bulletFrequency)
+        if (bulletFrequency > 0)
         {
-            while (time - prevBulletSpawnTime > 1 / bulletFrequency)
-                prevBulletSpawnTime += 1 / bulletFrequency;
-            //prevBulletSpawnTime = time - (time % (1 / bulletFrequency));
-            //prevBulletSpawnTime = time;
-            SpawnBullets();
+            float bulletPeriod = 1 / bulletFrequency;
+            if (time - prevBulletSpawnTime > bulletPeriod)
+            {
+                prevBulletSpawnTime = time;
+                SpawnBullets();
+            }
         }
         //StraightSpawner target = this.target as StraightSpawner;
     }

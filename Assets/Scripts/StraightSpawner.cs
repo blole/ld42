@@ -16,6 +16,7 @@ public class StraightSpawner : BulletSpawner
         bullet.speed = transform.TransformDirection(new Vector2(0, bulletSpeed));
     }
 
+#if UNITY_EDITOR
     protected override void OnSceneGUI()
     {
         Bullets bullets = FindObjectOfType<Bullets>();
@@ -24,4 +25,5 @@ public class StraightSpawner : BulletSpawner
         var rect = new Rect(-w / 2, 0, w, 50);
         Handles.DrawSolidRectangleWithOutline(transform.TransformPoints(rect.ToPoints()), new Color(1, 1, 1, 0.1f), Color.gray);
     }
+#endif
 }

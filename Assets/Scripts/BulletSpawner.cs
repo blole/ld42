@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
+[ExecuteInEditMode]
 public class BulletSpawner : MonoBehaviour
 {
     [Range(0, 0.5f)]
@@ -22,6 +23,11 @@ public class BulletSpawner : MonoBehaviour
     protected virtual void SpawnBullets() { }
     protected virtual void Update()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            return;
+#endif
+
         if (time - prevBulletSpawnTime > 1 / bulletFrequency)
         {
             while (time - prevBulletSpawnTime > 1 / bulletFrequency)
@@ -30,13 +36,16 @@ public class BulletSpawner : MonoBehaviour
             //prevBulletSpawnTime = time;
             SpawnBullets();
         }
+        //StraightSpawner target = this.target as StraightSpawner;
     }
 
     protected virtual void OnSceneGUI() { }
-    public void OnSceneGUI(SceneView sceneView)
+#if UNITY_EDITOR
+    private void OnRenderObject()
     {
         Handles.color = Color.white;
         if (gameObject.activeInHierarchy && gameObject.Ancestors().Any(go => go == Selection.activeGameObject))
             OnSceneGUI();
     }
+#endif
 }

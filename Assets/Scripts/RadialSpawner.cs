@@ -40,6 +40,7 @@ public class RadialSpawner : BulletSpawner
         }
     }
 
+#if UNITY_EDITOR
     protected override void OnSceneGUI()
     {
         Bullets bullets = FindObjectOfType<Bullets>();
@@ -52,4 +53,5 @@ public class RadialSpawner : BulletSpawner
             Handles.DrawSolidArc(transform.position, Vector3.back, q * transform.up, laneAngle, bullets.killPlaneRadius / 2);
         }
     }
+#endif
 }

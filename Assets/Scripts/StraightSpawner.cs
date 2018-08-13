@@ -23,7 +23,7 @@ public class StraightSpawner : BulletSpawner
 
         float w = laneWidth + bullets.bulletRadius * 2;
         var rect = new Rect(-w / 2, 0, w, 50);
-        Handles.DrawSolidRectangleWithOutline(transform.TransformPoints(rect.ToPoints()), new Color(1, 1, 1, 0.1f), Color.gray);
+        Handles.DrawSolidRectangleWithOutline(transform.TransformPoints(rect.ToPoints()), new Color(1, 1, 1, 0.05f), Color.gray);
     }
 #endif
 }

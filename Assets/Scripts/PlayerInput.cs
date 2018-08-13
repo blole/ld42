@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public float maxSpeed = 100;
+    public Rect moveRect = new Rect(-4,-4,8,8);
 
     private Vector2 startingPosition;
     private Bullets bullets;
@@ -22,7 +23,14 @@ public class PlayerInput : MonoBehaviour
 
         Vector2 speed = Vector2.ClampMagnitude(new Vector2(vx, vy), 1) * maxSpeed * Time.deltaTime;
 
-        transform.Translate(speed);
+        // move and clamp position into moveRect
+        float x = transform.position.x + speed.x;
+        float y = transform.position.y + speed.y;
+        if (x < moveRect.xMin) x = moveRect.xMin;
+        if (x > moveRect.xMax) x = moveRect.xMax;
+        if (y < moveRect.yMin) y = moveRect.yMin;
+        if (y > moveRect.yMax) y = moveRect.yMax;
+        transform.position = new Vector3(x, y, transform.position.z);
     }
 
     void LateUpdate()

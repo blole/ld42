@@ -5,8 +5,9 @@ using System.Linq;
 
 public class Bullets : MonoBehaviour
 {
+    public Rect killRect;
+    public Rect outerKillRect;
     public int startingBulletPoolSize = 16;
-    public float killPlaneRadius = 500;
     public GameObject bulletPrefab;
 
     public float bulletRadius { get { return bulletPrefab.GetComponent<CircleCollider2D>().radius; } }
@@ -31,22 +32,20 @@ public class Bullets : MonoBehaviour
     public Bullet allocBullet()
     {
         Bullet bullet = pool.isEmpty() ? createBullet() : pool.RemoveLast();
+        bullet.enteredView = false;
         bullet.active = true;
         active.Add(bullet);
         return bullet;
-    }
-
-    Vector3 RandomOnUnitCircle()
-    {
-        float angle = Random.value * Mathf.PI * 2;
-        return new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0);
     }
 
 	void Update ()
     {
         foreach (Bullet bullet in active)
         {
-            if (bullet.transform.position.magnitude > killPlaneRadius)
+            bool insideKillRect = killRect.Contains(bullet.transform.position);
+            bool insideOuterKillRect = outerKillRect.Contains(bullet.transform.position);
+            bullet.enteredView |= insideKillRect;
+            if ((bullet.enteredView && !insideKillRect) || !insideOuterKillRect)
                 bullet.active = false;
             if (!bullet.active)
                 pool.Add(bullet);

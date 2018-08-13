@@ -9,10 +9,12 @@ public class Bullet
     public Transform transform { get { return gameObject.transform; } }
 
     private float speed = 0;
+    [System.NonSerialized]
+    public bool enteredView = false;
 
     public void setDirection(float angle, float speed)
     {
-        gameObject.transform.Rotate(0, 0, angle, Space.World);
+        gameObject.transform.eulerAngles = new Vector3(0, 0, angle+180);
         this.speed = speed;
     }
 

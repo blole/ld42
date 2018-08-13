@@ -37,10 +37,10 @@ public class RadialSpawner : BulletSpawner
         {
             for (int i = 0; i < rotationalSymmetries; i++)
             {
-                float angle = (v - 0.5f) * laneAngle * Mathf.Deg2Rad + 2 * Mathf.PI * i / rotationalSymmetries;
+                float angle = (v - 0.5f) * laneAngle + 360 * i / rotationalSymmetries;
                 Bullet bullet = bullets.allocBullet();
                 bullet.transform.localPosition = transform.localPosition;
-                bullet.setDirection(transform.eulerAngles.z + angle*Mathf.Rad2Deg, bulletSpeed);
+                bullet.setDirection(transform.eulerAngles.z + angle, bulletSpeed);
             }
         }
     }
@@ -55,7 +55,7 @@ public class RadialSpawner : BulletSpawner
             float angle = -laneAngle / 2 + 360f * i / rotationalSymmetries;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.back);
             Handles.color = new Color(1, 1, 1, 0.05f);
-            Handles.DrawSolidArc(transform.position, Vector3.back, q * transform.up, laneAngle, bullets.killPlaneRadius / 2);
+            Handles.DrawSolidArc(transform.position, Vector3.back, q * transform.up, laneAngle, 200);
         }
     }
 #endif

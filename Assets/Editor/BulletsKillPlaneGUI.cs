@@ -10,7 +10,7 @@ public class BulletsKillPlaneGUI : Editor
     {
         Bullets target = this.target as Bullets;
 
-        Handles.color = new Color(1, 1, 1, 0.05f);
-        Handles.DrawSolidDisc(target.transform.position, Vector3.back, target.killPlaneRadius);
+        Handles.DrawSolidRectangleWithOutline(target.killRect, new Color(1, 1, 1, 0.05f), Color.red);
+        Handles.DrawSolidRectangleWithOutline(target.outerKillRect, Color.clear, new Color(1, 0.5f, 0.5f, 1));
     }
 }

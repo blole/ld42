@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: a8ef164253b3c55449d541673514c456
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _node_3909: {fileID: 2800000, guid: b60f0ae1e3576bb479c7d609a7eb04e8, type: 3}
+  - _Warp: {fileID: 2800000, guid: 668812df7582d344893d90b4012ed8f8, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

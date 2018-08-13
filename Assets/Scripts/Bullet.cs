@@ -17,6 +17,6 @@ public class Bullet
 
     public void Update ()
     {
-        transform.Translate(speed);
+        transform.Translate(speed * Time.deltaTime);
     }
 }

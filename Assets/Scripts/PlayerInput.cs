@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public float maxSpeed = 1;
+    public float maxSpeed = 100;
 
     private Vector2 startingPosition;
 
@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
         float vx = Input.GetAxis("Horizontal");
         float vy = Input.GetAxis("Vertical");
 
-        Vector2 speed = Vector2.ClampMagnitude(new Vector2(vx, vy), 1) * maxSpeed;
+        Vector2 speed = Vector2.ClampMagnitude(new Vector2(vx, vy), 1) * maxSpeed * Time.deltaTime;
 
         transform.Translate(speed);
     }

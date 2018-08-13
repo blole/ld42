@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 731530}
   - component: {fileID: 731531}
   m_Layer: 0
-  m_Name: StraightSpawner Left
+  m_Name: Straight L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55626b4b161cab64fb7d474822d39c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.15
+  bulletSpeed: 9
   bulletFrequency: 15
   bulletAnimation:
     serializedVersion: 2
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 183146435}
   - component: {fileID: 183146434}
   m_Layer: 0
-  m_Name: StraightSpawner
+  m_Name: Straight R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55626b4b161cab64fb7d474822d39c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.15
+  bulletSpeed: 9
   bulletFrequency: 15
   bulletAnimation:
     serializedVersion: 2
@@ -710,7 +710,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1238201531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.48, y: -2.37, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1433761165}
@@ -727,8 +727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59465c0a11d7ea428c98805d9b337d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.05
-  bulletFrequency: 15
+  bulletSpeed: 2
+  bulletFrequency: 10
   bulletAnimation:
     serializedVersion: 2
     m_Curve:
@@ -755,8 +755,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   animationSpeed: 1
   mirrorSymmetry: 1
-  rotationalSymmetries: 7
-  laneAngle: 70
+  rotationalSymmetries: 5
+  laneAngle: 72
   rotationSpeed: 0
 --- !u!1 &1433761164
 GameObject:
@@ -781,7 +781,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433761164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09196238, y: -0.061269686, z: 0.08984375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 183146435}
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ef26ea20e96f949af5d7c68599ee30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.1
+  maxSpeed: 3
 --- !u!212 &2060629989
 SpriteRenderer:
   m_ObjectHideFlags: 0

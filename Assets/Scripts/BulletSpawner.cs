@@ -7,8 +7,8 @@ using System.Linq;
 [ExecuteInEditMode]
 public class BulletSpawner : MonoBehaviour
 {
-    [Range(0, 0.5f)]
-    public float bulletSpeed = 0.1f;
+    [Range(0, 30)]
+    public float bulletSpeed = 6f;
     public float bulletFrequency = 1;
 
     protected Bullets bullets;

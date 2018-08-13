@@ -8,7 +8,19 @@ public class Bullet
     public bool active { get { return gameObject.activeSelf; } set { gameObject.SetActive(value); } }
     public Transform transform { get { return gameObject.transform; } }
 
-    public Vector2 speed;
+    private float moveSpeed = 0;
+    public Vector2 speed
+    {
+        get { return transform.up * moveSpeed; }
+        set
+        {
+            if (value.magnitude == 0)
+                transform.up = Vector3.up;
+            else
+                transform.up = value.normalized;
+            moveSpeed = value.magnitude;
+        }
+    }
 
     public Bullet(GameObject gameObject)
     {
@@ -17,6 +29,6 @@ public class Bullet
 
     public void Update ()
     {
-        transform.Translate(speed * Time.deltaTime);
+        transform.Translate(transform.up * moveSpeed * Time.deltaTime);
     }
 }

@@ -5,8 +5,6 @@ using System.Linq;
 
 public class Bullets : MonoBehaviour
 {
-    public float frequency = 0.1f;
-    public float bulletSpeed = 0.05f;
     public int startingBulletPoolSize = 16;
     public float killPlaneRadius = 500;
     public GameObject bulletPrefab;
@@ -46,13 +44,6 @@ public class Bullets : MonoBehaviour
 
 	void Update ()
     {
-        if (Random.value < frequency)
-        {
-            Bullet bullet = allocBullet();
-            bullet.transform.localPosition = RandomOnUnitCircle() * killPlaneRadius * 0.99f;
-            bullet.speed = RandomOnUnitCircle() * bulletSpeed;
-        }
-
         foreach (Bullet bullet in active)
         {
             if (bullet.transform.position.magnitude > killPlaneRadius)

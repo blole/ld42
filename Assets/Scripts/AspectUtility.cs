@@ -11,14 +11,8 @@ public class AspectUtility : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         if (!cam)
-        {
             cam = Camera.main;
-            Debug.Log("Setting the main camera " + cam.name);
-        }
-        else
-        {
-            Debug.Log("Setting the main camera " + cam.name);
-        }
+        //Debug.Log("Setting the main camera " + cam.name);
 
         if (!cam)
         {

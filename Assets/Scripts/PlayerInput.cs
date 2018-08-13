@@ -7,13 +7,15 @@ public class PlayerInput : MonoBehaviour
     public float maxSpeed = 100;
 
     private Vector2 startingPosition;
+    private Bullets bullets;
 
     void Start()
     {
         startingPosition = transform.localPosition;
+        bullets = FindObjectOfType<Bullets>();
     }
 
-    void Update ()
+    void Update()
     {
         float vx = Input.GetAxis("Horizontal");
         float vy = Input.GetAxis("Vertical");
@@ -23,13 +25,24 @@ public class PlayerInput : MonoBehaviour
         transform.Translate(speed);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void LateUpdate()
+    {
+        float bulletRadiusSqr = Mathf.Pow(bullets.bulletRadius, 2);
+        Vector2 bulletColliderOffset = bullets.bulletColliderOffset;
+
+        List<Bullet> hittingBullets = new List<Bullet>();
+        foreach (Bullet bullet in bullets.active)
+        {
+            if ((transform.position - bullet.transform.TransformPoint(bulletColliderOffset)).ToVector2().sqrMagnitude < bulletRadiusSqr)
+                hittingBullets.Add(bullet);
+        }
+        if (!hittingBullets.isEmpty())
+            OnBulletHit(hittingBullets);
+    }
+
+    void OnBulletHit(List<Bullet> hittingBullets)
     {
         transform.localPosition = startingPosition;
-
-        //remove bullet
-        Bullet bullet = FindObjectOfType<Bullets>().active.Find(b => b.gameObject == collision.gameObject);
-        if (bullet != null)
-            bullet.active = false;
+        hittingBullets.ForEach(b => b.active = false); //remove all hitting bullets
     }
 }

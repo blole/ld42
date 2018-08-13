@@ -10,13 +10,21 @@ public class Bullets : MonoBehaviour
     public int startingBulletPoolSize = 16;
     public GameObject bulletPrefab;
 
-    public float bulletRadius { get { return bulletPrefab.GetComponent<CircleCollider2D>().radius; } }
+    [System.NonSerialized]
+    public float bulletRadius;
+    [System.NonSerialized]
+    public Vector2 bulletColliderOffset;
     private List<Bullet> pool = new List<Bullet>();
     public List<Bullet> active = new List<Bullet>();
     
 	void Start ()
     {
-        bulletPrefab.SetActive(false);
+        //only use collider's radius, then remove it
+        bulletRadius = bulletPrefab.GetComponent<CircleCollider2D>().radius;
+        bulletColliderOffset = bulletPrefab.GetComponent<CircleCollider2D>().offset;
+        Debug.Log("bulletPrefab collision radius = " + bulletRadius);
+        bulletPrefab = createBullet().gameObject; //copy it to be able to remove collider
+        DestroyImmediate(bulletPrefab.GetComponent<CircleCollider2D>());
 
         for (int i = 0; i < startingBulletPoolSize; i++)
             pool.Add(createBullet());

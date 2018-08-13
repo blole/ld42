@@ -48,8 +48,6 @@ public class RadialSpawner : BulletSpawner
 #if UNITY_EDITOR
     protected override void OnSceneGUI()
     {
-        Bullets bullets = FindObjectOfType<Bullets>();
-
         for (int i = 0; i < rotationalSymmetries; i++)
         {
             float angle = -laneAngle / 2 + 360f * i / rotationalSymmetries;

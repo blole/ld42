@@ -7,12 +7,10 @@ public class PlayerInput : MonoBehaviour
     public float maxSpeed = 100;
     public Rect moveRect = new Rect(-4,-4,8,8);
 
-    private Vector2 startingPosition;
     private Bullets bullets;
 
     void Start()
     {
-        startingPosition = transform.localPosition;
         bullets = FindObjectOfType<Bullets>();
     }
 

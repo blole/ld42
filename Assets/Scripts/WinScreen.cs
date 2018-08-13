@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class KillScreen : MonoBehaviour
+public class WinScreen : MonoBehaviour
 {
-    [Range(0.01f,10)]
+    [Range(0.01f, 10)]
     public float fadeTime = 2;
     public Texture2D fadeTexture;
     public int fadeDrawDepth = -1000;
+    public float winTime = 100;
 
-    private bool isKill = false;
+    private bool isWin = false;
     private float elapsedTime = 0;
     private float timeScaleBackup;
 
-    public void OnKill()
+    public void OnWin()
     {
-        if (!isKill)
+        if (!isWin)
         {
-            isKill = true;
+            isWin = true;
             timeScaleBackup = Time.timeScale;
             Time.timeScale = 0.1f;
         }
@@ -26,23 +27,26 @@ public class KillScreen : MonoBehaviour
 
     void Update()
     {
-		if (isKill)
+        if (Time.time > winTime)
+            OnWin();
+
+        if (isWin)
         {
             elapsedTime += Time.unscaledDeltaTime;
             if (elapsedTime > fadeTime)
             {
                 Time.timeScale = timeScaleBackup;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("winscreen");
             }
         }
     }
 
     void OnGUI()
     {
-        if (isKill)
+        if (isWin)
         {
             float alpha = Mathf.Clamp01(elapsedTime / fadeTime);
-            GUI.color = new Color(0, 0, 0, alpha);
+            GUI.color = new Color(1, 1, 1, alpha);
             GUI.depth = fadeDrawDepth;
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeTexture);
         }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TestPost : MonoBehaviour {
 
     RenderTexture lastFrame;
-    int i = 0;
+    //int i = 0;
 
     public Material testEffect;
 
@@ -22,7 +22,7 @@ public class TestPost : MonoBehaviour {
         if (lastFrame == null) {
             lastFrame = new RenderTexture(source);
             //lastFrame = source;
-            Debug.Log("lastframe set");
+            //Debug.Log("lastframe set");
         }
 
         testEffect.SetTexture("_LastFrame", lastFrame);

@@ -27,7 +27,7 @@ public class WinScreen : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > winTime)
+        if (Time.timeSinceLevelLoad > winTime)
             OnWin();
 
         if (isWin)
